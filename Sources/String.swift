@@ -133,9 +133,6 @@ public extension String {
     public func strip() -> String {
         return self.stringByTrimmingCharactersInSet(.whitespaceCharacterSet())
     }
-}
-
-extension String {
   
     /// Split string into array of 'words'
     func words() -> [String] {

@@ -1,3 +1,54 @@
+Cent [![Build Status](https://travis-ci.org/ankurp/Cent.svg?branch=master)](https://travis-ci.org/ankurp/Cent) ![CocoaPods](https://img.shields.io/cocoapods/v/Cent.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+===========
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
+
+## Contents ##
+
+- [Setup](#setup)
+- [API Documentation](http://www.dollarswift.org)
+- [Usage](#cent-usage)
+  - [Array](#array-extensions)
+  - [Date](#date-extensions)  
+  - [Dictionary](#dictionary-extensions)
+  - [Int](#int-extensions)
+  - [String](#string-extensions)
+  - [Range](#range-extensions)
+- [Contributing](#contributing)
+
+# Setup #
+
+## Using [Carthage](https://github.com/Carthage/Carthage)
+
+Add `github "ankurp/Cent" ~> 5.0.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started).
+
+## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
+
+Add `pod 'Cent'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Requires cocoapod version 0.36.x or greater.
+
+## Using `git submodule`
+
+1. If you are using git then add Cent as a submodule using `git submodule add https://github.com/ankurp/Cent.git`. If not using git download the project using `git clone https://github.com/ankurp/Cent.git` in your project folder.
+2. Open the `Cent` folder. Drag Cent.xcodeproj, inside the Cent folder, into the file navigator of your Xcode project.
+3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
+4. In the tab bar at the top of that window, open the "Build Phases" panel.
+5. Expand the "Link Binary with Libraries" group, and add Cent.framework.
+6. In your project file `import Cent` and you can call all of the helper functions.
+
+## Support for Older Xcode and Swift
+
+* For Xcode 6.3 (Swift 1.2) use version `3.0.3`
+* For Xcode 6.1 and 6.2 (Swift 1.1) use version `2.2.0`
+
+## Communication ##
+
+- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Dollar) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift) with tag `dollar.swift`.
+- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift).
+- If you **found a bug**, open an issue.
+- If you **have a feature request**, open an issue.
+- If you **want to contribute**, submit a pull request.
+
 # Cent Usage #
 
 ## Array Extensions ##
@@ -718,15 +769,4 @@ For each index in the range invoke the callback
 ```
 
 # Contributing #
-If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md)
-
-# Roadmap #
-
-* Add more extention functions to the Cent library
-* Benchmark and improve performance if applicable
-
-# Dollar or Cent #
-If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ankurp/dollar.swift/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Cent/blob/master/CONTRIBUTING.md)
