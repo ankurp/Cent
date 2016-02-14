@@ -4,6 +4,8 @@ Cent [![Build Status](https://travis-ci.org/ankurp/Cent.svg?branch=master)](http
 
 Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
 
+[Dollar](https://github.com/ankurp/Dollar) is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
+
 ## Contents ##
 
 - [Setup](#setup)
