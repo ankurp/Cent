@@ -1,0 +1,3 @@
+[submodule "Dollar"]
+	path = Dollar
+	url = https://github.com/ankurp/Dollar.git

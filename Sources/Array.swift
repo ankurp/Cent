@@ -196,10 +196,6 @@ public extension Array {
     func contains<T:Equatable>(value: T) -> Bool {
         return $.contains(map { $0 as! T }, value: value)
     }
-
-}
-
-extension Array {
   
     /// Return the result of repeatedly calling `combine` with an accumulated value initialized
     /// to `initial` on each element of `self`, in turn with a corresponding index.
