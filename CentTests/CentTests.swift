@@ -143,6 +143,10 @@ class CentTests: XCTestCase {
         }
         XCTAssertEqual(str, "A0B1C2D3E4", "Should reduce array to element followed by the index of the element")
     }
+
+    func testArrayZipObject() {
+        XCTAssertTrue(["Frank", "Ted"].zipObject([12,77]) as [String: Int] == ["Frank": 12, "Ted": 77], "Zip up arrays to object")
+    }
     
     /**
         String Test Cases

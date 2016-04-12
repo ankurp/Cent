@@ -285,6 +285,17 @@ arr.contains("Z")
 => false
 ```
 
+### `zipObject<T>(values: [T]) -> [Element:T]`
+
+Creates an object composed from arrays of keys and values.
+
+```swift
+let keys = ["A", "B", "C"]
+let vals = [1,2,3]
+keys.zipObject(vals)
+=> ["A":1,"B":2,"C":3]
+```
+
 
 ## Character Extensions ##
 

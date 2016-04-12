@@ -213,6 +213,26 @@ public extension Array {
   
 }
 
+extension Array where Element: Hashable {
+  
+    /// Creates an object composed from arrays of keys and values.
+    ///
+    /// :param values The array of values.
+    /// :return Dictionary based on the keys and values passed in order.
+    public func zipObject<T>(values: [T]) -> [Element:T] {
+        
+        var dict = [Element:T]()
+        
+        guard self.count == values.count else { return dict }
+        
+        for (i,key) in self.enumerate() {
+            dict[key] = values[i]
+        }
+
+        return dict
+    }
+}
+
 /// Overloaded operator to appends another array to an array
 ///
 /// :return array with the element appended in the end
