@@ -220,16 +220,7 @@ extension Array where Element: Hashable {
     /// :param values The array of values.
     /// :return Dictionary based on the keys and values passed in order.
     public func zipObject<T>(values: [T]) -> [Element:T] {
-        
-        var dict = [Element:T]()
-        
-        guard self.count == values.count else { return dict }
-        
-        for (i,key) in self.enumerate() {
-            dict[key] = values[i]
-        }
-
-        return dict
+        return $.zipObject(self, values: values)
     }
 }
 
