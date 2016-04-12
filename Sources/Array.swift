@@ -213,6 +213,17 @@ public extension Array {
   
 }
 
+extension Array where Element: Hashable {
+  
+    /// Creates an object composed from arrays of keys and values.
+    ///
+    /// :param values The array of values.
+    /// :return Dictionary based on the keys and values passed in order.
+    public func zipObject<T>(values: [T]) -> [Element:T] {
+        return $.zipObject(self, values: values)
+    }
+}
+
 /// Overloaded operator to appends another array to an array
 ///
 /// :return array with the element appended in the end
