@@ -148,6 +148,11 @@ class CentTests: XCTestCase {
         XCTAssertTrue(["Frank", "Ted"].zipObject([12,77]) as [String: Int] == ["Frank": 12, "Ted": 77], "Zip up arrays to object")
     }
     
+    func testArrayIsNotEmpty() {
+        XCTAssertTrue([1,2,3].isNotEmpty, "Return true, the array is not empty")
+        XCTAssertFalse([Int]().isNotEmpty, "Return false, the array is empty")
+    }
+    
     /**
         String Test Cases
     */

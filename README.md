@@ -296,6 +296,16 @@ keys.zipObject(vals)
 => ["A":1,"B":2,"C":3]
 ```
 
+### `isNotEmpty`
+
+Checks if the array has one or more elements.
+
+```swift
+let arr = [1,2,3]
+arr.isNotEmpty
+=> true
+```
+
 
 ## Character Extensions ##
 
