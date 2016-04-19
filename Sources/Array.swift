@@ -210,6 +210,15 @@ public extension Array {
         }
         return result
     }
+
+    /// Checks if the array has one or more elements.
+    ///
+    /// :return true if the array is not empty, or false if it is empty.
+    public var isNotEmpty: Bool {
+        get {
+            return !self.isEmpty
+        }
+    }
   
 }
 
