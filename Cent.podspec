@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Cent"
-  s.version      = "5.0.0"
+  s.version      = "5.0.1"
   s.summary      = "Extension for common object types for Swift Language"
   s.homepage     = "https://github.com/ankurp/Cent"
   s.license      = { :type => "MIT", :file => "LICENSE" }
