@@ -23,7 +23,7 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Cent" ~> 5.0.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started).
+Add `github "ankurp/Cent" ~> 5.1.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started).
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
