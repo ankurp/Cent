@@ -47,11 +47,13 @@ public class Regex {
                 if i == range.location {
                     strBuilder << "\\"
                 }
-                strBuilder << charArr[i++]
+                strBuilder << charArr[i]
+                i += 1
             }
         }
         while i < charArr.count {
-            strBuilder << charArr[i++]
+            strBuilder << charArr[i]
+            i += 1
         }
         return String(strBuilder)
     }

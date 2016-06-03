@@ -79,7 +79,7 @@ public extension String {
     public subscript(range: Range<Int>) -> String {
         let start = startIndex.advancedBy(range.startIndex)
         let end = startIndex.advancedBy(range.endIndex)
-        return self.substringWithRange(Range(start: start, end: end))
+        return self.substringWithRange(start..<end)
     }
     
     /// Get the start index of Character
