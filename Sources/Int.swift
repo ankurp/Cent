@@ -104,8 +104,9 @@ public extension Int {
     /// :params callback to invoke
     public func downTo(limit: Int, callback: () -> ()) {
         var selfCopy = self
-        while selfCopy-- >= limit {
+        while selfCopy >= limit {
             callback()
+            selfCopy -= 1
         }
     }
     
@@ -116,7 +117,8 @@ public extension Int {
     public func downTo(limit: Int, callback: (Int) -> ()) {
         var selfCopy = self
         while selfCopy >= limit {
-            callback(selfCopy--)
+            callback(selfCopy)
+            selfCopy -= 1
         }
     }
 
