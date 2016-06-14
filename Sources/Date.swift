@@ -46,6 +46,7 @@ public extension NSDate {
         let dateFmt = NSDateFormatter()
         dateFmt.timeZone = NSTimeZone.defaultTimeZone()
         dateFmt.dateFormat = format
+        dateFmt.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierISO8601)
         return dateFmt.dateFromString(dateStr)!
     }
     
