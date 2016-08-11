@@ -10,27 +10,27 @@ import Foundation
 import Dollar
 
 public extension Int {
-    
+
     /// Invoke a callback n times
     ///
-    /// :param callback The function to invoke that accepts the index
-    public func times(callback: (Int) -> ()) {
+    /// - parameter callback: The function to invoke that accepts the index
+    public func times(callback: Int -> Void) {
         (0..<self).eachWithIndex { callback($0) }
     }
-    
+
     /// Invoke a callback n times
     ///
-    /// :param callback The function to invoke
-    public func times(function: () -> ()) {
-        self.times { (index: Int) -> () in
+    /// - parameter function: The function to invoke
+    public func times(function: Void -> Void) {
+        self.times { (index: Int) -> Void in
             function()
         }
     }
-    
-    
+
+
     /// Check if it is even
     ///
-    /// :return Bool whether int is even
+    /// - returns: Bool whether int is even
     public var isEven: Bool {
         get {
             return self % 2 == 0
@@ -39,7 +39,7 @@ public extension Int {
 
     /// Check if it is odd
     ///
-    /// :return Bool whether int is odd
+    /// - returns: Bool whether int is odd
     public var isOdd: Bool {
         get {
             return self % 2 == 1
@@ -48,7 +48,7 @@ public extension Int {
 
     /// Get ASCII character from integer
     ///
-    /// :return Character represented for the given integer
+    /// - returns: Character represented for the given integer
     public var char: Character {
         get {
             return Character(UnicodeScalar(self))
@@ -57,7 +57,7 @@ public extension Int {
 
     /// Splits the int into array of digits
     ///
-    /// :return Bool whether int is odd
+    /// - returns: Bool whether int is odd
     public func digits() -> [Int] {
         var digits: [Int] = []
         var selfCopy = self
@@ -70,51 +70,51 @@ public extension Int {
 
     /// Get the next int
     ///
-    /// :return next int
+    /// - returns: next int
     public func next() -> Int {
         return self + 1
     }
-    
+
     /// Get the previous int
     ///
-    /// :return previous int
+    /// - returns: previous int
     public func prev() -> Int {
         return self - 1
     }
 
     /// Invoke the callback from int up to and including limit
     ///
-    /// :params limit the max value to iterate upto
-    /// :params callback to invoke
-    public func upTo(limit: Int, callback: () -> ()) {
+    /// - parameter limit: the max value to iterate upto
+    /// - parameter callback: to invoke
+    public func upTo(limit: Int, callback: Void -> Void) {
         (self...limit).each { callback() }
     }
 
     /// Invoke the callback from int up to and including limit passing the index
     ///
-    /// :params limit the max value to iterate upto
-    /// :params callback to invoke
-    public func upTo(limit: Int, callback: (Int) -> ()) {
+    /// - parameter limit: the max value to iterate upto
+    /// - parameter callback: to invoke
+    public func upTo(limit: Int, callback: Int -> Void) {
         (self...limit).eachWithIndex { callback($0) }
     }
-    
+
     /// Invoke the callback from int down to and including limit
     ///
-    /// :params limit the min value to iterate upto
-    /// :params callback to invoke
-    public func downTo(limit: Int, callback: () -> ()) {
+    /// - parameter limit: the min value to iterate upto
+    /// - parameter callback: to invoke
+    public func downTo(limit: Int, callback: Void -> Void) {
         var selfCopy = self
         while selfCopy >= limit {
             callback()
             selfCopy -= 1
         }
     }
-    
+
     /// Invoke the callback from int down to and including limit passing the index
     ///
-    /// :params limit the min value to iterate upto
-    /// :params callback to invoke
-    public func downTo(limit: Int, callback: (Int) -> ()) {
+    /// - parameter limit: the min value to iterate upto
+    /// - parameter callback: to invoke
+    public func downTo(limit: Int, callback: Int -> Void) {
         var selfCopy = self
         while selfCopy >= limit {
             callback(selfCopy)
@@ -124,57 +124,54 @@ public extension Int {
 
     /// GCD metod return greatest common denominator with number passed
     ///
-    /// :param number
-    /// :return Greatest common denominator
-    public func gcd(n: Int) -> Int {
-        return $.gcd(self, n)
+    /// - parameter number:
+    /// - returns: Greatest common denominator
+    public func gcd(number: Int) -> Int {
+        return $.gcd(self, number)
     }
 
     /// LCM method return least common multiple with number passed
     ///
-    /// :param number
-    /// :return Least common multiple
-    public func lcm(n: Int) -> Int {
-        return $.lcm(self, n)
+    /// - parameter number:
+    /// - returns: Least common multiple
+    public func lcm(number: Int) -> Int {
+        return $.lcm(self, number)
     }
 
     /// Returns random number from 0 upto but not including value of integer
     ///
-    /// :return Random number
+    /// - returns: Random number
     public func random() -> Int {
         return $.random(self)
     }
 
     /// Returns Factorial of integer
     ///
-    /// :return factorial
+    /// - returns: factorial
     public func factorial() -> Int {
         return $.factorial(self)
     }
 
     /// Returns true if i is in closed interval
     ///
-    /// :param i to check if it is in interval
-    /// :param interval to check in
-    /// :return true if it is in interval otherwise false
+    /// - parameter interval: to check in
+    /// - returns: true if it is in interval otherwise false
     public func isIn(interval: ClosedInterval<Int>) -> Bool {
         return $.it(self, isIn: interval)
     }
 
     /// Returns true if i is in half open interval
     ///
-    /// :param i to check if it is in interval
-    /// :param interval to check in
-    /// :return true if it is in interval otherwise false
+    /// - parameter interval: to check in
+    /// - returns: true if it is in interval otherwise false
     public func isIn(interval: HalfOpenInterval<Int>) -> Bool {
         return $.it(self, isIn: interval)
     }
 
     /// Returns true if i is in range
     ///
-    /// :param i to check if it is in range
-    /// :param interval to check in
-    /// :return true if it is in interval otherwise false
+    /// - parameter interval: to check in
+    /// - returns: true if it is in interval otherwise false
     public func isIn(interval: Range<Int>) -> Bool {
         return $.it(self, isIn: interval)
     }
@@ -234,7 +231,7 @@ public extension Int {
     var years: CalendarMath {
         return mathForUnit(.Year)
     }
-    
+
     var year: CalendarMath {
         return years
     }

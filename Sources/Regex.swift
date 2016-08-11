@@ -9,33 +9,33 @@
 import Foundation
 import Dollar
 
-let RegexEscapePattern = "[\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|]"
-let RegexPatternRegex = Regex(RegexEscapePattern)
-
 public class Regex {
-    
+
     let expression: NSRegularExpression
     let pattern: String
-    
+
+    static let RegexEscapePattern = "[\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|]"
+    static let RegexPatternRegex = Regex(RegexEscapePattern)
+
     public init(_ pattern: String) {
         self.pattern = pattern
         self.expression = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
     }
-    
+
     public func matches(testStr: String) -> [AnyObject] {
         let matches = self.expression.matchesInString(testStr, options: [], range:NSMakeRange(0, testStr.characters.count))
         return matches
     }
-    
+
     public func rangeOfFirstMatch(testStr: String) -> NSRange {
         return self.expression.rangeOfFirstMatchInString(testStr, options: [], range:NSMakeRange(0, testStr.characters.count))
     }
-    
+
     public func test(testStr: String) -> Bool {
         let matches = self.matches(testStr)
         return matches.count > 0
     }
-    
+
     public class func escapeStr(str: String) -> String {
         let matches = RegexPatternRegex.matches(str)
         var charArr = [Character](str.characters)
@@ -61,7 +61,7 @@ public class Regex {
 
 /// Useful regex patterns (mapped from lodash)
 struct RegexHelper {
-  
+
     /// Unicode character classes
     static let astralRange = "\\ud800-\\udfff"
     static let comboRange = "\\u0300-\\u036f\\ufe20-\\ufe23"
@@ -74,7 +74,7 @@ struct RegexHelper {
     static let upperRange = "A-Z\\xc0-\\xd6\\xd8-\\xde"
     static let varRange = "\\ufe0e\\ufe0f"
     static let breakRange = mathOpRange + nonCharRange + quoteRange + spaceRange
-  
+
     /// Unicode capture groups
     static let astral = "[" + astralRange + "]"
     static let breakGroup = "[" + breakRange + "]"
@@ -89,7 +89,7 @@ struct RegexHelper {
     static let surrPair = "[\\ud800-\\udbff][\\udc00-\\udfff]"
     static let upper = "[" + upperRange + "]"
     static let ZWJ = "\\u200d"
-  
+
     /// Unicode regex composers
     static let lowerMisc = "(?:" + lower + "|" + misc + ")"
     static let upperMisc = "(?:" + upper + "|" + misc + ")"
@@ -99,10 +99,10 @@ struct RegexHelper {
     static let seq = optVar + optMod + optJoin
     static let emoji = "(?:" + [dingbat, regional, surrPair].joinWithSeparator("|") + ")" + seq
     static let symbol = "(?:" + [nonAstral + combo + "?", combo, regional, surrPair, astral].joinWithSeparator("|") + ")"
-  
+
     /// Match non-compound words composed of alphanumeric characters
     static let basicWord = "[a-zA-Z0-9]+"
-  
+
     /// Match complex or compound words
     static let complexWord = [
       upper + "?" + lower + "+(?=" + [breakGroup, upper, "$"].joinWithSeparator("|") + ")",
@@ -111,8 +111,8 @@ struct RegexHelper {
       digits + "(?:" + lowerMisc + "+)?",
       emoji
     ].joinWithSeparator("|")
-  
+
     /// Detect strings that need a more robust regexp to match words
     static let hasComplexWord = "[a-z][A-Z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]"
-  
+
 }
