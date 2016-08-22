@@ -23,7 +23,7 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Cent" ~> 5.0.2` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started).
+Add `github "ankurp/Cent" ~> 5.0.3` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started).
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
@@ -31,7 +31,7 @@ Add `pod 'Cent'` to your `Podfile` and run `pod install`. Add `use_frameworks!` 
 
 ## Using [Swift Package Manager](https://github.com/apple/swift-package-manager)
 
-Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 5, minor: 0)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
+Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 5, minor: 2)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
 
 ## Using `git submodule`
 
