@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension NSDate {
+public extension Date {
 
     /// Returns a new Date given the year month and day
     ///
@@ -16,25 +16,19 @@ public extension NSDate {
     /// - parameter month:
     /// - parameter day:
     /// - returns: Date
-    public class func from(year year: Int, month: Int, day: Int) -> NSDate? {
-        let c = NSDateComponents()
-        c.year = year
-        c.month = month
-        c.day = day
+    public static func from(year: Int, month: Int, day: Int) -> Date? {
+        let c = DateComponents(calendar: nil, timeZone: nil, era: nil, year: year, month: month, day: day)
+        let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
 
-        if let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian) {
-            return gregorian.dateFromComponents(c)
-        } else {
-            return .None
-        }
+        return gregorian.date(from: c)
     }
 
     /// Returns a new Date given the unix timestamp
     ///
     /// - parameter unix: timestamp
     /// - returns: Date
-    public class func from(unix unix: Double) -> NSDate {
-        return NSDate(timeIntervalSince1970: unix)
+    public static func from(unix: Double) -> Date {
+        return Date(timeIntervalSince1970: unix)
     }
 
     /// Parses the date based on the format and return a new Date
@@ -42,12 +36,12 @@ public extension NSDate {
     /// - parameter dateStr: String version of the date
     /// - parameter format: By default it is year month day
     /// - returns: Date
-    public class func parse(dateStr: String, format: String = "yyyy-MM-dd") -> NSDate {
-        let dateFmt = NSDateFormatter()
-        dateFmt.timeZone = NSTimeZone.defaultTimeZone()
+    public static func parse(dateStr: String, format: String = "yyyy-MM-dd") -> Date {
+        let dateFmt = DateFormatter()
+        dateFmt.timeZone = NSTimeZone.default
         dateFmt.dateFormat = format
-        dateFmt.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierISO8601)
-        return dateFmt.dateFromString(dateStr)!
+        dateFmt.calendar = Calendar(identifier: Calendar.Identifier.iso8601)
+        return dateFmt.date(from: dateStr)!
     }
 
     /// Returns the unix timestamp of the date passed in or
@@ -55,9 +49,7 @@ public extension NSDate {
     ///
     /// - parameter date:
     /// - returns: Double
-    public class func unix(date: NSDate = NSDate()) -> Double {
+    public static func unix(date: Date = Date()) -> Double {
        return date.timeIntervalSince1970 as Double
     }
 }
-
-public typealias Date = NSDate

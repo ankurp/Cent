@@ -14,14 +14,14 @@ public extension Int {
     /// Invoke a callback n times
     ///
     /// - parameter callback: The function to invoke that accepts the index
-    public func times(callback: Int -> Void) {
-        (0..<self).eachWithIndex { callback($0) }
+    public func times(callback: @escaping (Int) -> Void) {
+        (0..<self).forEach(callback)
     }
 
     /// Invoke a callback n times
     ///
     /// - parameter function: The function to invoke
-    public func times(function: Void -> Void) {
+    public func times(function: @escaping (Void) -> Void) {
         self.times { (index: Int) -> Void in
             function()
         }
@@ -51,7 +51,7 @@ public extension Int {
     /// - returns: Character represented for the given integer
     public var char: Character {
         get {
-            return Character(UnicodeScalar(self))
+            return Character(UnicodeScalar(self)!)
         }
     }
 
@@ -62,10 +62,10 @@ public extension Int {
         var digits: [Int] = []
         var selfCopy = self
         while selfCopy > 0 {
-            digits << (selfCopy % 10)
+            _ = digits << (selfCopy % 10)
             selfCopy = (selfCopy / 10)
         }
-        return Array(digits.reverse())
+        return Array(digits.reversed())
     }
 
     /// Get the next int
@@ -86,23 +86,25 @@ public extension Int {
     ///
     /// - parameter limit: the max value to iterate upto
     /// - parameter callback: to invoke
-    public func upTo(limit: Int, callback: Void -> Void) {
-        (self...limit).each { callback() }
+    public func upTo(limit: Int, callback: @escaping (Void) -> Void) {
+        (self...limit).forEach { _ in
+            callback()
+        }
     }
 
     /// Invoke the callback from int up to and including limit passing the index
     ///
     /// - parameter limit: the max value to iterate upto
     /// - parameter callback: to invoke
-    public func upTo(limit: Int, callback: Int -> Void) {
-        (self...limit).eachWithIndex { callback($0) }
+    public func upTo(limit: Int, callback: @escaping (Int) -> Void) {
+        (self...limit).forEach(callback)
     }
 
     /// Invoke the callback from int down to and including limit
     ///
     /// - parameter limit: the min value to iterate upto
     /// - parameter callback: to invoke
-    public func downTo(limit: Int, callback: Void -> Void) {
+    public func downTo(limit: Int, callback: (Void) -> Void) {
         var selfCopy = self
         while selfCopy >= limit {
             callback()
@@ -114,7 +116,7 @@ public extension Int {
     ///
     /// - parameter limit: the min value to iterate upto
     /// - parameter callback: to invoke
-    public func downTo(limit: Int, callback: Int -> Void) {
+    public func downTo(limit: Int, callback: (Int) -> Void) {
         var selfCopy = self
         while selfCopy >= limit {
             callback(selfCopy)
@@ -156,19 +158,19 @@ public extension Int {
     ///
     /// - parameter interval: to check in
     /// - returns: true if it is in interval otherwise false
-    public func isIn(interval: ClosedInterval<Int>) -> Bool {
-        return $.it(self, isIn: interval)
+    public func isIn(interval: ClosedRange<Int>) -> Bool {
+        return $.it(self, isIn: Range(interval))
     }
 
-    /// Returns true if i is in half open interval
+    /// Returns true if i is in closed interval
     ///
     /// - parameter interval: to check in
     /// - returns: true if it is in interval otherwise false
-    public func isIn(interval: HalfOpenInterval<Int>) -> Bool {
-        return $.it(self, isIn: interval)
+    public func isIn(interval: CountableClosedRange<Int>) -> Bool {
+        return $.it(self, isIn: Range(interval))
     }
 
-    /// Returns true if i is in range
+    /// Returns true if i is in half open interval
     ///
     /// - parameter interval: to check in
     /// - returns: true if it is in interval otherwise false
@@ -176,12 +178,12 @@ public extension Int {
         return $.it(self, isIn: interval)
     }
 
-    private func mathForUnit(unit: NSCalendarUnit) -> CalendarMath {
+    private func mathForUnit(unit: Calendar.Component) -> CalendarMath {
         return CalendarMath(unit: unit, value: self)
     }
 
     var seconds: CalendarMath {
-        return mathForUnit(.Second)
+        return mathForUnit(unit: .second)
     }
 
     var second: CalendarMath {
@@ -189,7 +191,7 @@ public extension Int {
     }
 
     var minutes: CalendarMath {
-        return mathForUnit(.Minute)
+        return mathForUnit(unit: .minute)
     }
 
     var minute: CalendarMath {
@@ -197,7 +199,7 @@ public extension Int {
     }
 
     var hours: CalendarMath {
-        return mathForUnit(.Hour)
+        return mathForUnit(unit: .hour)
     }
 
     var hour: CalendarMath {
@@ -205,7 +207,7 @@ public extension Int {
     }
 
     var days: CalendarMath {
-        return mathForUnit(.Day)
+        return mathForUnit(unit: .day)
     }
 
     var day: CalendarMath {
@@ -213,7 +215,7 @@ public extension Int {
     }
 
     var weeks: CalendarMath {
-        return mathForUnit(.WeekOfYear)
+        return mathForUnit(unit: .weekOfYear)
     }
 
     var week: CalendarMath {
@@ -221,7 +223,7 @@ public extension Int {
     }
 
     var months: CalendarMath {
-        return mathForUnit(.Month)
+        return mathForUnit(unit: .month)
     }
 
     var month: CalendarMath {
@@ -229,45 +231,46 @@ public extension Int {
     }
 
     var years: CalendarMath {
-        return mathForUnit(.Year)
+        return mathForUnit(unit: .year)
     }
 
     var year: CalendarMath {
         return years
     }
 
+
     struct CalendarMath {
-        private let unit: NSCalendarUnit
+        private let unit: Calendar.Component
         private let value: Int
-        private var calendar: NSCalendar {
-            return NSCalendar.autoupdatingCurrentCalendar()
+        private var calendar: Calendar {
+            return NSCalendar.autoupdatingCurrent
         }
 
-        private init(unit: NSCalendarUnit, value: Int) {
+        public init(unit: Calendar.Component, value: Int) {
             self.unit = unit
             self.value = value
         }
 
-        private func generateComponents(modifer: (Int) -> (Int) = (+)) -> NSDateComponents {
-            let components = NSDateComponents()
-            components.setValue(modifer(value), forComponent: unit)
+        private func generateComponents(modifer: (Int) -> (Int) = (+)) -> DateComponents {
+            var components = DateComponents()
+            components.setValue(modifer(value), for: unit)
             return components
         }
 
-        public func from(date: NSDate) -> NSDate? {
-            return calendar.dateByAddingComponents(generateComponents(), toDate: date, options: [])
+        public func from(date: Date) -> Date? {
+            return calendar.date(byAdding: generateComponents(), to: date)
         }
 
-        public var fromNow: NSDate? {
-            return from(NSDate())
+        public var fromNow: Date? {
+            return from(date: Date())
         }
 
-        public func before(date: NSDate) -> NSDate? {
-            return calendar.dateByAddingComponents(generateComponents(-), toDate: date, options: [])
+        public func before(date: Date) -> Date? {
+            return calendar.date(byAdding: generateComponents(modifer: -), to: date)
         }
 
-        public var ago: NSDate? {
-            return before(NSDate())
+        public var ago: Date? {
+            return before(date: Date())
         }
     }
 }
