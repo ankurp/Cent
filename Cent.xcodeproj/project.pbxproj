@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		421BF8221D9997340082C59D /* CentTests in Resources */ = {isa = PBXBuildFile; fileRef = 421BF8211D9997340082C59D /* CentTests */; };
 		92180C5F1C71064D003BA0E3 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92180C571C71064D003BA0E3 /* Array.swift */; };
 		92180C601C71064D003BA0E3 /* Cent.h in Headers */ = {isa = PBXBuildFile; fileRef = 92180C581C71064D003BA0E3 /* Cent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92180C611C71064D003BA0E3 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92180C591C71064D003BA0E3 /* Date.swift */; };
@@ -17,30 +18,22 @@
 		92180C661C71064D003BA0E3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92180C5E1C71064D003BA0E3 /* String.swift */; };
 		925CB1EB1A3FE717004F1319 /* Cent.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9299310319F747AA00150D45 /* Cent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; };
-		9299310519F747B700150D45 /* CentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92EE195F8338003DBB60 /* CentTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		92180C731C711846003BA0E3 /* PBXContainerItemProxy */ = {
+		421BF82C1D99A2870082C59D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 92180C6E1C711845003BA0E3 /* Dollar.xcodeproj */;
+			containerPortal = 421BF8271D99A2870082C59D /* Dollar.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 92E0D03C19467C67002ACC3D;
 			remoteInfo = Dollar;
 		};
-		92180C751C711846003BA0E3 /* PBXContainerItemProxy */ = {
+		421BF82E1D99A2870082C59D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 92180C6E1C711845003BA0E3 /* Dollar.xcodeproj */;
+			containerPortal = 421BF8271D99A2870082C59D /* Dollar.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 92E6686F19F09C6400BB4FB8;
 			remoteInfo = DollarTests;
-		};
-		92180C771C711874003BA0E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92180C6E1C711845003BA0E3 /* Dollar.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 92E0D03B19467C67002ACC3D;
-			remoteInfo = Dollar;
 		};
 		9299310619F747BC00150D45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -66,6 +59,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		421BF8211D9997340082C59D /* CentTests */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CentTests; path = Tests/CentTests; sourceTree = "<group>"; };
+		421BF8271D99A2870082C59D /* Dollar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dollar.xcodeproj; path = "Packages/Dollar-6.0.0/Dollar.xcodeproj"; sourceTree = "<group>"; };
 		92180C571C71064D003BA0E3 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = Sources/Array.swift; sourceTree = SOURCE_ROOT; };
 		92180C581C71064D003BA0E3 /* Cent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cent.h; path = Sources/Cent.h; sourceTree = SOURCE_ROOT; };
 		92180C591C71064D003BA0E3 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Sources/Date.swift; sourceTree = SOURCE_ROOT; };
@@ -75,10 +70,7 @@
 		92180C5D1C71064D003BA0E3 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Regex.swift; path = Sources/Regex.swift; sourceTree = SOURCE_ROOT; };
 		92180C5E1C71064D003BA0E3 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Sources/String.swift; sourceTree = SOURCE_ROOT; };
 		92180C671C71065C003BA0E3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
-		92180C6E1C711845003BA0E3 /* Dollar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dollar.xcodeproj; path = Dollar/Dollar.xcodeproj; sourceTree = "<group>"; };
 		924F92DC195F8338003DBB60 /* Cent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		924F92ED195F8338003DBB60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		924F92EE195F8338003DBB60 /* CentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentTests.swift; sourceTree = "<group>"; };
 		92E6688119F0B89600BB4FB8 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -101,11 +93,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		92180C6F1C711845003BA0E3 /* Products */ = {
+		421BF8201D9997260082C59D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				92180C741C711846003BA0E3 /* Dollar.framework */,
-				92180C761C711846003BA0E3 /* DollarTests.xctest */,
+				421BF8211D9997340082C59D /* CentTests */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		421BF8281D99A2870082C59D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				421BF82D1D99A2870082C59D /* Dollar.framework */,
+				421BF82F1D99A2870082C59D /* DollarTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,10 +113,10 @@
 		924F92D2195F8338003DBB60 = {
 			isa = PBXGroup;
 			children = (
-				92180C6E1C711845003BA0E3 /* Dollar.xcodeproj */,
+				421BF8201D9997260082C59D /* Tests */,
 				924F92DE195F8338003DBB60 /* Cent */,
-				924F92EB195F8338003DBB60 /* CentTests */,
 				924F92DD195F8338003DBB60 /* Products */,
+				421BF8271D99A2870082C59D /* Dollar.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,23 +153,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		924F92EB195F8338003DBB60 /* CentTests */ = {
-			isa = PBXGroup;
-			children = (
-				924F92EE195F8338003DBB60 /* CentTests.swift */,
-				924F92EC195F8338003DBB60 /* Supporting Files */,
-			);
-			path = CentTests;
-			sourceTree = "<group>";
-		};
-		924F92EC195F8338003DBB60 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				924F92ED195F8338003DBB60 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -196,7 +179,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				92180C781C711874003BA0E3 /* PBXTargetDependency */,
 			);
 			name = Cent;
 			productName = Cent;
@@ -256,8 +238,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 92180C6F1C711845003BA0E3 /* Products */;
-					ProjectRef = 92180C6E1C711845003BA0E3 /* Dollar.xcodeproj */;
+					ProductGroup = 421BF8281D99A2870082C59D /* Products */;
+					ProjectRef = 421BF8271D99A2870082C59D /* Dollar.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -269,18 +251,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		92180C741C711846003BA0E3 /* Dollar.framework */ = {
+		421BF82D1D99A2870082C59D /* Dollar.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Dollar.framework;
-			remoteRef = 92180C731C711846003BA0E3 /* PBXContainerItemProxy */;
+			remoteRef = 421BF82C1D99A2870082C59D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		92180C761C711846003BA0E3 /* DollarTests.xctest */ = {
+		421BF82F1D99A2870082C59D /* DollarTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = DollarTests.xctest;
-			remoteRef = 92180C751C711846003BA0E3 /* PBXContainerItemProxy */;
+			remoteRef = 421BF82E1D99A2870082C59D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -290,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				421BF8221D9997340082C59D /* CentTests in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,18 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9299310519F747B700150D45 /* CentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		92180C781C711874003BA0E3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Dollar;
-			targetProxy = 92180C771C711874003BA0E3 /* PBXContainerItemProxy */;
-		};
 		9299310719F747BC00150D45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 924F92DB195F8338003DBB60 /* Cent */;
