@@ -108,7 +108,7 @@ struct RegexHelper {
     private static let word3 = upper + "?" + lowerMisc + "+"
     private static let word4 = digits + "(?:" + lowerMisc + "+)?"
     private static let word5 = emoji
-    
+
     /// Match complex or compound words
     static let complexWord = [
       word1,

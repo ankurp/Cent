@@ -142,7 +142,7 @@ public extension String {
         let wordRegex = try! NSRegularExpression(pattern: wordPattern, options: [])
         let matches = wordRegex.matches(in: self, options: [], range: wordRange)
         let words = matches.map { (result: NSTextCheckingResult) -> String in
-            if let range = self.rangeFromNSRange(nsRange: result.range) {                
+            if let range = self.rangeFromNSRange(nsRange: result.range) {
                 return self.substring(with: range)
             } else {
                 return ""
@@ -165,7 +165,6 @@ public extension String {
     /// - parameter nsRange: the NSRange to be converted
     /// - returns: A corresponding Range if possible
     func rangeFromNSRange(nsRange: NSRange) -> Range<String.Index>? {
-        
         let from16 = utf16.startIndex.advanced(by: nsRange.location)
         let to16 = from16.advanced(by: nsRange.length)
         if let from = String.Index(from16, within: self) {

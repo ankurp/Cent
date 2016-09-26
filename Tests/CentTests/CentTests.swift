@@ -31,7 +31,7 @@ class CentTests: XCTestCase {
 
     func testArrayEach() {
         var arr: [String] = []
-        let result = ["A", "B", "C"].each() { (str: String) -> (Void) in 
+        let result = ["A", "B", "C"].each() { (str: String) -> (Void) in
             arr.append(str)
         }
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")

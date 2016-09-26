@@ -87,7 +87,7 @@ public extension Int {
     /// - parameter limit: the max value to iterate upto
     /// - parameter callback: to invoke
     public func upTo(limit: Int, callback: @escaping (Void) -> Void) {
-        (self...limit).forEach { _ in 
+        (self...limit).forEach { _ in
             callback()
         }
     }
@@ -230,7 +230,7 @@ public extension Int {
         return years
     }
 
-    
+
     struct CalendarMath {
         private let unit: NSCalendar.Unit
         private let value: Int
