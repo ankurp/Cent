@@ -23,7 +23,7 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Cent" ~> 5.0.3` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started).
+Add `github "ankurp/Cent" ~> 6.0.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started).
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
@@ -31,7 +31,7 @@ Add `pod 'Cent'` to your `Podfile` and run `pod install`. Add `use_frameworks!` 
 
 ## Using [Swift Package Manager](https://github.com/apple/swift-package-manager)
 
-Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 5, minor: 2)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
+Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 6, minor: 0)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
 
 ## Using `git submodule`
 
@@ -42,8 +42,10 @@ Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", 
 5. Expand the "Link Binary with Libraries" group, and add Cent.framework.
 6. In your project file `import Cent` and you can call all of the helper functions.
 
-## Support for Older Xcode and Swift
+## Support for Xcode and Swift
 
+* For Xcode 8 (Swift 3) user version `6.0.0`
+* For Xcode 7 (Swift 2) use version `4.1.0` or `5.2.0`
 * For Xcode 6.3 (Swift 1.2) use version `3.0.3`
 * For Xcode 6.1 and 6.2 (Swift 1.1) use version `2.2.0`
 
