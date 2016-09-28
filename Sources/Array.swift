@@ -40,7 +40,7 @@ public extension Array {
     /// - parameter callback: The callback function to invoke that take an element
     /// - returns: array itself
     func eachWithIndex(callback: (Int, Element) -> ()) -> [Element] {
-        for (index, elem) in self.enumerate() {
+        for (index, elem) in self.enumerated() {
             callback(index, elem)
         }
         return self
@@ -51,7 +51,7 @@ public extension Array {
     /// - parameter callback: The callback function to invoke
     /// - returns: The array itself
     func each(callback: (Element) -> ()) -> [Element] {
-        self.eachWithIndex { (index, elem) -> () in
+        _ = self.eachWithIndex { (index, elem) -> () in
             callback(elem)
         }
         return self
@@ -62,7 +62,7 @@ public extension Array {
     /// - parameter when: The condition to check each element against
     /// - parameter callback: The callback function to invoke
     /// - returns: The array itself
-    func each(when when: (Element) -> Bool, callback: (Element) -> ()) -> [Element] {
+    func each(when: (Element) -> Bool, callback: (Element) -> ()) -> [Element] {
         return $.each(self, when: when, callback: callback)
     }
 
@@ -80,7 +80,7 @@ public extension Array {
     /// - parameter index: Can be positive or negative to find from end of the array
     /// - parameter orElse: Default value to use if index is out of bounds
     /// - returns: Element fetched from the array or the default value passed in orElse
-    func fetch(index: Int, orElse: Element? = .None) -> Element! {
+    func fetch(index: Int, orElse: Element? = .none) -> Element! {
         return $.fetch(self, index, orElse: orElse)
     }
 
@@ -121,7 +121,7 @@ public extension Array {
     /// - parameter index: The index in the array
     /// - returns: Element at that index
     func get(index: Int) -> Element! {
-        return self.fetch(index)
+        return self.fetch(index: index)
     }
 
     /// Gets all but the last element or last n elements of an array.
@@ -175,9 +175,9 @@ public extension Array {
     /// - returns: Element at that index
     mutating func remove<T: Equatable>(value: T) -> T? {
         if let index = $.indexOf(map { $0 as! T }, value: value) {
-            return (removeAtIndex(index) as? T)
+            return (remove(at: index) as? T)
         } else {
-            return .None
+            return .none
         }
     }
 
@@ -196,9 +196,9 @@ public extension Array {
     /// - parameter combine: the combiner with the result, index, and current element
     /// - throws: Rethrows the error generated from combine
     /// - returns: combined result
-    func reduceWithIndex<T>(initial: T, @noescape combine: (T, Int, Array.Generator.Element) throws -> T) rethrows -> T {
+    func reduceWithIndex<T>(initial: T, combine: (T, Int, Array.Generator.Element) throws -> T) rethrows -> T {
         var result = initial
-        for (index, element) in self.enumerate() {
+        for (index, element) in self.enumerated() {
             result = try combine(result, index, element)
         }
         return result
@@ -231,7 +231,7 @@ extension Array where Element: Hashable {
 /// - parameter left: array to insert elements into
 /// - parameter right: array to source elements from
 /// - returns: array with the element appended in the end
-public func<<<T>(inout left: [T], right: [T]) -> [T] {
+public func<<<T>(left: inout [T], right: [T]) -> [T] {
     left += right
     return left
 }
@@ -241,7 +241,7 @@ public func<<<T>(inout left: [T], right: [T]) -> [T] {
 /// - parameter array: array to insert element into
 /// - parameter elem: element to insert
 /// - returns: array with the element appended in the end
-public func<<<T>(inout array: [T], elem: T) -> [T] {
+public func<<<T>( array: inout [T], elem: T) -> [T] {
     array.append(elem)
     return array
 }

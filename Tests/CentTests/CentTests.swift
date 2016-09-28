@@ -7,12 +7,12 @@
 //
 
 import XCTest
-import Cent
+@testable import Cent
 
 class CentTests: XCTestCase {
 
     struct TestDate {
-        let unit: NSCalendarUnit
+        let unit: Calendar.Component
         let singleMath: Int.CalendarMath
         let multipleMath: Int.CalendarMath
     }
@@ -31,22 +31,25 @@ class CentTests: XCTestCase {
 
     func testArrayEach() {
         var arr: [String] = []
-        let result = ["A", "B", "C"].each({ arr.append($0) })
+        let result = ["A", "B", "C"].each() { (str: String) -> (Void) in
+            arr.append(str)
+        }
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")
-        XCTAssertEqual(arr.joinWithSeparator(""), "ABC", "Return string concatenated")
+        XCTAssertEqual(arr.joined(separator: ""), "ABC", "Return string concatenated")
     }
 
     func testArrayEachWhen() {
         var arr: [String] = []
-        let result = ["A", "B", "C"].each(when: { return $0 <= "B"}, callback: { arr.append($0) })
+        let result = ["A", "B", "C"].each(when: { return $0 <= "B"}) { arr.append($0) }
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")
-        XCTAssertEqual(arr.joinWithSeparator(""), "AB", "Return string concatenated")
+        XCTAssertEqual(arr.joined(separator: ""), "AB", "Return string concatenated")
     }
 
     func testArrayCycle() {
         var result = ""
-        [1, 2, 3].cycle(2) {
-            print($0, separator: "", terminator: "", toStream: &result)
+        let arr = ["1", "2", "3"]
+        arr.cycle(times: 2) { i in
+            result = result + i
         }
         XCTAssertEqual("123123", result, "testCycle: Should return cycled pattern")
     }
@@ -60,18 +63,18 @@ class CentTests: XCTestCase {
 
     func testArrayIndexOf() {
         let array = ["foo", "spam", "bar", "eggs"]
-        XCTAssertEqual(array.indexOf("spam"), 1, "Should return corect index")
+        XCTAssertEqual(array.index(of: "spam"), 1, "Should return corect index")
     }
 
     func testArrayIndexOfReturnNill() {
-        XCTAssertNil(["foo", "spam", "bar", "eggs"].indexOf("NONE"), "Should return nill when element not found")
+        XCTAssertNil(["foo", "spam", "bar", "eggs"].index(of: "NONE"), "Should return nill when element not found")
     }
 
     func testArrayFetch() {
         let arr = [1, 2, 3, 4, 5, 6, 7, 8]
-        XCTAssertNil(arr.fetch(100), "Should return nill")
-        XCTAssertEqual(arr.fetch(100, orElse: 42), 42, "Should return orElse value")
-        XCTAssertEqual(arr.fetch(-1), 8, "Should return last element")
+        XCTAssertNil(arr.fetch(index: 100), "Should return nill")
+        XCTAssertEqual(arr.fetch(index: 100, orElse: 42), 42, "Should return orElse value")
+        XCTAssertEqual(arr.fetch(index: -1), 8, "Should return last element")
     }
 
     func testArrayFindIndex() {
@@ -93,22 +96,22 @@ class CentTests: XCTestCase {
     }
 
     func testArrayFlatten() {
-        let unFlattened = ["foo", ["bar"], [["spam"]], [[["eggs"]]] ]
+        let unFlattened = ["foo", ["bar"], [["spam"]], [[["eggs"]]]] as [Any]
         let flattened = unFlattened.flatten()
-        XCTAssertEqual(["foo", "bar", "spam", "eggs"], flattened, "Should return flattened array")
+        XCTAssertEqual(["foo", "bar", "spam", "eggs"], flattened as! [String], "Should return flattened array")
     }
 
     func testArrayGet() {
-        let element = ["foo", "bar"].get(0)
+        let element = ["foo", "bar"].get(index: 0)
         XCTAssertEqual("foo", element!, "Should return index element 0")
 
-        let nothing = ["foo", "bar"].get(1000)
+        let nothing = ["foo", "bar"].get(index: 1000)
         XCTAssertNil(nothing, "Should return nill")
     }
 
     func testArrayInitial() {
         XCTAssertEqual(["foo", "bar", "spam"].initial(), ["foo", "bar"], "Should return all but last")
-        XCTAssertEqual(["foo", "bar", "spam"].initial(2), ["foo"], "Should return all but last 2 elements")
+        XCTAssertEqual(["foo", "bar", "spam"].initial(numElements: 2), ["foo"], "Should return all but last 2 elements")
     }
 
     func testArrayLast() {
@@ -116,7 +119,7 @@ class CentTests: XCTestCase {
     }
 
     func testArrayRest() {
-        XCTAssertEqual(["foo", "bar", "spam"].rest(2), ["spam"], "Should return all but first 2 element")
+        XCTAssertEqual(["foo", "bar", "spam"].rest(numElements: 2), ["spam"], "Should return all but first 2 element")
         XCTAssertEqual(["foo", "bar", "spam"].rest(), ["bar", "spam"], "Should return all but first element")
     }
 
@@ -130,10 +133,10 @@ class CentTests: XCTestCase {
 
     func testArrayRemove() {
         var arr = ["A", "B", "C", "D", "E"]
-        arr.remove("B")
+        _ = arr.remove(value: "B")
         XCTAssertEqual(arr, ["A", "C", "D", "E"], "Test remove")
 
-        arr.remove("Z")
+        _ = arr.remove(value: "Z")
         XCTAssertEqual(arr, ["A", "C", "D", "E"], "Remove element that does not exist")
     }
 
@@ -144,14 +147,14 @@ class CentTests: XCTestCase {
     }
 
     func testArrayReduceWithIndex() {
-        let str = ["A", "B", "C", "D", "E"].reduceWithIndex("") { (result, index, element) -> String in
+        let str = ["A", "B", "C", "D", "E"].reduceWithIndex(initial: "") { (result, index, element) -> String in
           result + element + "\(index)"
         }
         XCTAssertEqual(str, "A0B1C2D3E4", "Should reduce array to element followed by the index of the element")
     }
 
     func testArrayZipObject() {
-        XCTAssertTrue(["Frank", "Ted"].zipObject([12, 77]) as [String: Int] == ["Frank": 12, "Ted": 77], "Zip up arrays to object")
+        XCTAssertTrue(["Frank", "Ted"].zipObject(values: [12, 77]) as [String: Int] == ["Frank": 12, "Ted": 77], "Zip up arrays to object")
     }
 
     func testArrayIsNotEmpty() {
@@ -186,7 +189,7 @@ class CentTests: XCTestCase {
         XCTAssertEqual(str.deburr(), match, "Should remove string of all accents and diacritics")
     }
 
-    func contextCases(context: (testStrings: [String]) -> Void) {
+    func contextCases(_ context: (_ testStrings: [String]) -> Void) {
         let testStrs = [
             "I will give you <50> bucks",
             "In Philàdèlphia, it is wõrth 50 bucks.",
@@ -195,7 +198,7 @@ class CentTests: XCTestCase {
             "\tMerryNEWYear! 😊",
             "\nThis is *the* sports-watch of the '80s."
         ]
-        context(testStrings: testStrs)
+        context(testStrs)
     }
 
     func testCamelCase() {
@@ -282,36 +285,37 @@ class CentTests: XCTestCase {
     */
 
     func testDateMath() {
-        let calendar = NSCalendar.autoupdatingCurrentCalendar()
+        let calendar = Calendar.current
         let multiple = 2
 
         let tests = [
-            TestDate(unit: .Second, singleMath: 1.second, multipleMath: multiple.seconds),
-            TestDate(unit: .Minute, singleMath: 1.minute, multipleMath: multiple.minutes),
-            TestDate(unit: .Hour, singleMath: 1.hour, multipleMath: multiple.hours),
-            TestDate(unit: .Day, singleMath: 1.day, multipleMath: multiple.days),
-            TestDate(unit: .WeekOfYear, singleMath: 1.week, multipleMath: multiple.weeks),
-            TestDate(unit: .Month, singleMath: 1.month, multipleMath: multiple.months),
-            TestDate(unit: .Year, singleMath: 1.year, multipleMath: multiple.years)
+            TestDate(unit: .second, singleMath: 1.second, multipleMath: multiple.seconds),
+            TestDate(unit: .minute, singleMath: 1.minute, multipleMath: multiple.minutes),
+            TestDate(unit: .hour, singleMath: 1.hour, multipleMath: multiple.hours),
+            TestDate(unit: .day, singleMath: 1.day, multipleMath: multiple.days),
+            TestDate(unit: .weekOfYear, singleMath: 1.week, multipleMath: multiple.weeks),
+            TestDate(unit: .month, singleMath: 1.month, multipleMath: multiple.months),
+            TestDate(unit: .year, singleMath: 1.year, multipleMath: multiple.years)
         ]
 
-        tests.each { (test) -> () in
-            func equalIsh(lhs: NSDate!, rhs: NSDate!) -> Bool {
+        _ = tests.each(callback: { (test) -> () in
+            func equalIsh(lhs: Date!, rhs: Date!) -> Bool {
                 return round(lhs.timeIntervalSinceNow) == round(rhs.timeIntervalSinceNow)
             }
 
-            let components = NSDateComponents()
-            components.setValue(1, forComponent: test.unit)
+            var components = DateComponents()
+            components.setValue(1, for: test.unit)
 
-            XCTAssert(equalIsh(test.singleMath.fromNow, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: [])), "formNow single units are equal.")
-            components.setValue(-1, forComponent: test.unit)
-            XCTAssert(equalIsh(test.singleMath.ago, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: [])), "ago single units are equal.")
 
-            components.setValue(multiple, forComponent: test.unit)
-            XCTAssert(equalIsh(test.multipleMath.fromNow, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: [])), "formNow multiple units are equal.")
-            components.setValue(-multiple, forComponent: test.unit)
-            XCTAssert(equalIsh(test.multipleMath.ago, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: [])), "ago multiple units are equal.")
-        }
+            XCTAssert(equalIsh(lhs: test.singleMath.fromNow, rhs: calendar.date(byAdding: components, to: Date())), "formNow single units are equal.")
+            components.setValue(-1, for: test.unit)
+            XCTAssert(equalIsh(lhs: test.singleMath.ago, rhs: calendar.date(byAdding: components, to: Date())), "ago single units are equal.")
+
+            components.setValue(multiple, for: test.unit)
+            XCTAssert(equalIsh(lhs: test.multipleMath.fromNow, rhs: calendar.date(byAdding: components, to: Date())), "formNow multiple units are equal.")
+            components.setValue(-multiple, for: test.unit)
+            XCTAssert(equalIsh(lhs: test.multipleMath.ago, rhs: calendar.date(byAdding: components, to: Date())), "ago multiple units are equal.")
+        })
     }
 
     /**
@@ -322,7 +326,7 @@ class CentTests: XCTestCase {
         let eastCoastStateCapitals = ["New York": "Albany", "Maryland":"Annapolis", "Connecticut":"Hartford" ]
         let westCoastStateCapitals = ["California": "Sacremento", "Washington":"Olympia"]
         var usStateCapitals: Dictionary<String, String> = [:]
-        usStateCapitals.merge(eastCoastStateCapitals, westCoastStateCapitals)
+        usStateCapitals.merge(dictionaries: eastCoastStateCapitals, westCoastStateCapitals)
         XCTAssertEqual(usStateCapitals, ["New York": "Albany", "Maryland":"Annapolis", "Connecticut":"Hartford", "California": "Sacremento", "Washington":"Olympia"])
     }
 
