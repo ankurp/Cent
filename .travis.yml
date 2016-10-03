@@ -2,4 +2,6 @@ language: objective-c
 osx_image: xcode8
 
 script: 
-- xcodebuild clean build test -scheme Cent -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6'
+- swift build
+- xcodebuild clean build -scheme Cent -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6'
+- swift test
