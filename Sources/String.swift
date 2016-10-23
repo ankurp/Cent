@@ -164,9 +164,8 @@ public extension String {
     ///
     /// - returns: New string
     func deburr() -> String {
-        let mutString = NSMutableString(string: self)
-        CFStringTransform(mutString, nil, kCFStringTransformStripCombiningMarks, false)
-        return mutString as String
+	  let deburredString = self.folding(options: .diacriticInsensitive, locale: .current)
+	  return deburredString
     }
 
     /// Converts an NSRange to a Swift friendly Range supporting Unicode
