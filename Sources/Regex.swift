@@ -7,7 +7,10 @@
 //
 
 import Foundation
-
+#if os(Linux)
+public typealias NSRegularExpression = RegularExpression
+public typealias NSTextCheckingResult = TextCheckingResult
+#endif
 public class Regex {
 
     let expression: NSRegularExpression
@@ -21,7 +24,7 @@ public class Regex {
         self.expression = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
     }
 
-    public func matches(testStr: String) -> [AnyObject] {
+    public func matches(testStr: String) -> [NSTextCheckingResult] {
         let matches = self.expression.matches(in: testStr, options: [], range:NSMakeRange(0, testStr.characters.count))
         return matches
     }
@@ -42,8 +45,8 @@ public class Regex {
         var i = 0
         for match in matches {
             let range = match.range
-            while i < (range?.location)! + (range?.length)! {
-                if i == range?.location {
+            while i < (range.location) + (range.length) {
+                if i == range.location {
                     _ = strBuilder << "\\"
                 }
                 _ = strBuilder << charArr[i]
