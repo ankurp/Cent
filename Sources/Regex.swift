@@ -39,7 +39,7 @@ public class Regex {
     }
 
     public class func escapeStr(str: String) -> String {
-        let matches = Regex(RegexEscapePattern).matches(testStr: str)
+        let matches = RegexPatternRegex.matches(testStr: str)
         var charArr = [Character](str.characters)
         var strBuilder = [Character]()
         var i = 0
