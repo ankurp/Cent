@@ -80,6 +80,7 @@
 		92180C6E1C711845003BA0E3 /* Dollar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dollar.xcodeproj; path = Dollar/Dollar.xcodeproj; sourceTree = "<group>"; };
 		924F92DC195F8338003DBB60 /* Cent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E6688119F0B89600BB4FB8 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92EF83611DCF815700D7F4FD /* Try.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Try.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +114,7 @@
 		924F92D2195F8338003DBB60 = {
 			isa = PBXGroup;
 			children = (
+				92EF83611DCF815700D7F4FD /* Try.playground */,
 				92180C6E1C711845003BA0E3 /* Dollar.xcodeproj */,
 				924F92DE195F8338003DBB60 /* Cent */,
 				924F92EB195F8338003DBB60 /* CentTests */,
