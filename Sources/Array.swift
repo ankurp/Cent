@@ -39,7 +39,7 @@ public extension Array {
     ///
     /// - parameter callback: The callback function to invoke that take an element
     /// - returns: array itself
-    func eachWithIndex(callback: (Int, Element) -> ()) -> [Element] {
+    @discardableResult func eachWithIndex(callback: (Int, Element) -> ()) -> [Element] {
         for (index, elem) in self.enumerated() {
             callback(index, elem)
         }
@@ -50,8 +50,8 @@ public extension Array {
     ///
     /// - parameter callback: The callback function to invoke
     /// - returns: The array itself
-    func each(callback: (Element) -> ()) -> [Element] {
-        _ = self.eachWithIndex { (index, elem) -> () in
+    @discardableResult func each(callback: (Element) -> ()) -> [Element] {
+        self.eachWithIndex { (index, elem) -> () in
             callback(elem)
         }
         return self
@@ -62,7 +62,7 @@ public extension Array {
     /// - parameter when: The condition to check each element against
     /// - parameter callback: The callback function to invoke
     /// - returns: The array itself
-    func each(when: (Element) -> Bool, callback: (Element) -> ()) -> [Element] {
+    @discardableResult func each(when: (Element) -> Bool, callback: (Element) -> ()) -> [Element] {
         return $.each(self, when: when, callback: callback)
     }
 
