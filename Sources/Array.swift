@@ -213,6 +213,15 @@ public extension Array {
         }
     }
 
+    /// Move item in array from old index to new index
+    ///
+    /// - parameter oldIndex: index of item to be moved
+    /// - parameter newIndex: index to move item to
+    mutating func moveElement(at oldIndex: Int, to newIndex: Int) {
+        let element = self[newIndex]
+        self[newIndex] = self[oldIndex]
+        self[oldIndex] = element
+    }
 }
 
 extension Array where Element: Hashable {
