@@ -335,4 +335,15 @@ class CentTests: XCTestCase {
         XCTAssertEqual(arr - ["C"], ["B", "A", "E", "D"], "Test removes C")
         XCTAssertEqual(arr - ["E", "C"], ["B", "A", "D"], "Test removes C and E")
     }
+
+    func testArrayMove() {
+        var arr = ["B", "A", "C", "E", "D"]
+        arr.moveElement(at: 1, to: 2)
+        XCTAssertEqual(arr, ["B", "C", "A", "E", "D"], "Move A to C position")
+
+        arr.moveElement(at: 0, to: 2)
+        arr.moveElement(at: 1, to: 2)
+        arr.moveElement(at: 4, to: 3)
+        XCTAssertEqual(arr, ["A", "B", "C", "D", "E"], "Move multiple elements")
+    }
 }
