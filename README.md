@@ -31,7 +31,7 @@ Add `pod 'Cent'` to your `Podfile` and run `pod install`. Add `use_frameworks!` 
 
 ## Using [Swift Package Manager](https://github.com/apple/swift-package-manager)
 
-Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 6, minor: 0)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
+Add the following dependency `.Package(url: "https://github.com/ankurp/Cent", majorVersion: 6, minor: 0)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
 
 ## Using `git submodule`
 
