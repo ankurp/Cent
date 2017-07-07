@@ -1,4 +1,4 @@
-Cent [![Build Status](https://travis-ci.org/ankurp/Cent.svg?branch=master)](https://travis-ci.org/ankurp/Cent) ![CocoaPods](https://img.shields.io/cocoapods/v/Cent.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+Cent [![Build Status](https://travis-ci.org/ankurp/Cent.svg?branch=master)](https://travis-ci.org/ankurp/Cent) ![CocoaPods](https://img.shields.io/cocoapods/v/Cent.svg)
 ===========
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -21,10 +21,6 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 # Setup #
 
-## Using [Carthage](https://github.com/Carthage/Carthage)
-
-Add `github "ankurp/Cent" ~> 6.0.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started).
-
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
 Add `pod 'Cent'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Requires cocoapod version 0.36.x or greater.
@@ -44,7 +40,7 @@ Add the following dependency `.Package(url: "https://github.com/ankurp/Cent", ma
 
 ## Support for Xcode and Swift
 
-* For Xcode 8 (Swift 3) user version `6.0.2`
+* For Xcode 8 (Swift 3) user version `6.0.4`
 * For Xcode 7 (Swift 2) use version `4.1.0` or `5.2.0`
 * For Xcode 6.3 (Swift 1.2) use version `3.0.3`
 * For Xcode 6.1 and 6.2 (Swift 1.1) use version `2.2.0`
