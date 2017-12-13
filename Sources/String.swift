@@ -12,7 +12,7 @@ public extension String {
 
     public var length: Int {
         get {
-            return self.characters.count
+            return self.count
         }
     }
 
@@ -55,7 +55,7 @@ public extension String {
     /// - parameter index: Index for which the character is returned
     /// - returns: Character at index i
     public subscript(index: Int) -> Character? {
-        if let char = Array(self.characters).get(index: index) {
+        if let char = Array(self).get(index: index) {
             return char
         }
         return .none
@@ -145,7 +145,7 @@ public extension String {
     /// - returns: array of strings
     func words() -> [String] {
         let hasComplexWordRegex = try! NSRegularExpression(pattern: RegexHelper.hasComplexWord, options: [])
-        let wordRange = NSMakeRange(0, self.characters.count)
+        let wordRange = NSMakeRange(0, self.count)
         let hasComplexWord = hasComplexWordRegex.rangeOfFirstMatch(in: self, options: [], range: wordRange)
         let wordPattern = hasComplexWord.length > 0 ? RegexHelper.complexWord : RegexHelper.basicWord
         let wordRegex = try! NSRegularExpression(pattern: wordPattern, options: [])
@@ -173,8 +173,8 @@ public extension String {
     /// - parameter nsRange: the NSRange to be converted
     /// - returns: A corresponding Range if possible
     func rangeFromNSRange(nsRange: NSRange) -> Range<String.Index>? {
-        let from16 = utf16.startIndex.advanced(by: nsRange.location)
-        let to16 = from16.advanced(by: nsRange.length)
+        let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location)
+        let to16 = utf16.index(from16, offsetBy: nsRange.length)
         if let from = String.Index(from16, within: self) {
             if let to = String.Index(to16, within: self) {
                 return from..<to

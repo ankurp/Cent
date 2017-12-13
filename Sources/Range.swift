@@ -22,7 +22,7 @@ public extension CountableRange {
     /// For each index in the range invoke the callback
     ///
     /// - parameter callback: The callback function to invoke
-    func each(callback: @escaping (Void) -> (Void)) {
+    func each(callback: @escaping () -> (Void)) {
         self.eachWithIndex() { (T) -> () in
             callback()
         }
@@ -44,7 +44,7 @@ public extension CountableClosedRange {
     /// For each index in the range invoke the callback
     ///
     /// - parameter callback: The callback function to invoke
-    func each(callback: @escaping (Void) -> (Void)) {
+    func each(callback: @escaping () -> (Void)) {
         self.eachWithIndex() { (T) -> () in
             callback()
         }
