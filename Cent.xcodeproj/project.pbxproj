@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34E7B86B1FE0E98E0043646D /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7B8681FE0E98E0043646D /* Dollar.swift */; };
-		34E7B86C1FE0E98E0043646D /* AutoCurry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7B8691FE0E98E0043646D /* AutoCurry.swift */; };
-		34E7B86D1FE0E98E0043646D /* AutoBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E7B86A1FE0E98E0043646D /* AutoBind.swift */; };
 		OBJ_41 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* Array.swift */; };
 		OBJ_42 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Date.swift */; };
 		OBJ_43 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Dictionary.swift */; };
@@ -48,10 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		34E7B8671FE0E98E0043646D /* Dollar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dollar.h; sourceTree = "<group>"; };
-		34E7B8681FE0E98E0043646D /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
-		34E7B8691FE0E98E0043646D /* AutoCurry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCurry.swift; sourceTree = "<group>"; };
-		34E7B86A1FE0E98E0043646D /* AutoBind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoBind.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
@@ -94,17 +87,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		34E7B8661FE0E98E0043646D /* Dollar 7.0.0 */ = {
-			isa = PBXGroup;
-			children = (
-				34E7B8671FE0E98E0043646D /* Dollar.h */,
-				34E7B8681FE0E98E0043646D /* Dollar.swift */,
-				34E7B8691FE0E98E0043646D /* AutoCurry.swift */,
-				34E7B86A1FE0E98E0043646D /* AutoBind.swift */,
-			);
-			path = "Dollar 7.0.0";
-			sourceTree = "<group>";
-		};
 		OBJ_15 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +107,6 @@
 		OBJ_18 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				34E7B8661FE0E98E0043646D /* Dollar 7.0.0 */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -251,9 +232,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				34E7B86C1FE0E98E0043646D /* AutoCurry.swift in Sources */,
-				34E7B86D1FE0E98E0043646D /* AutoBind.swift in Sources */,
-				34E7B86B1FE0E98E0043646D /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +409,6 @@
 		OBJ_53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,7 +426,6 @@
 		OBJ_54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
