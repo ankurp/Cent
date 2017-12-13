@@ -21,7 +21,7 @@ public extension Int {
     /// Invoke a callback n times
     ///
     /// - parameter function: The function to invoke
-    public func times(function: @escaping (Void) -> Void) {
+    public func times(function: @escaping () -> Void) {
         self.times { (index: Int) -> Void in
             function()
         }
@@ -86,7 +86,7 @@ public extension Int {
     ///
     /// - parameter limit: the max value to iterate upto
     /// - parameter callback: to invoke
-    public func upTo(limit: Int, callback: @escaping (Void) -> Void) {
+    public func upTo(limit: Int, callback: @escaping () -> Void) {
         (self...limit).forEach { _ in
             callback()
         }
@@ -104,7 +104,7 @@ public extension Int {
     ///
     /// - parameter limit: the min value to iterate upto
     /// - parameter callback: to invoke
-    public func downTo(limit: Int, callback: (Void) -> Void) {
+    public func downTo(limit: Int, callback: () -> Void) {
         var selfCopy = self
         while selfCopy >= limit {
             callback()
@@ -129,7 +129,7 @@ public extension Int {
     /// - parameter number:
     /// - returns: Greatest common denominator
     public func gcd(number: Int) -> Int {
-        return $.gcd(self, number)
+        return `$`.gcd(self, number)
     }
 
     /// LCM method return least common multiple with number passed
@@ -137,21 +137,21 @@ public extension Int {
     /// - parameter number:
     /// - returns: Least common multiple
     public func lcm(number: Int) -> Int {
-        return $.lcm(self, number)
+        return `$`.lcm(self, number)
     }
 
     /// Returns random number from 0 upto but not including value of integer
     ///
     /// - returns: Random number
     public func random() -> Int {
-        return $.random(self)
+        return `$`.random(self)
     }
 
     /// Returns Factorial of integer
     ///
     /// - returns: factorial
     public func factorial() -> Int {
-        return $.factorial(self)
+        return `$`.factorial(self)
     }
 
     /// Returns true if i is in closed interval
@@ -159,7 +159,7 @@ public extension Int {
     /// - parameter interval: to check in
     /// - returns: true if it is in interval otherwise false
     public func isIn(interval: ClosedRange<Int>) -> Bool {
-        return $.it(self, isIn: Range(interval))
+        return `$`.it(self, isIn: Range(interval))
     }
 
     /// Returns true if i is in closed interval
@@ -167,7 +167,7 @@ public extension Int {
     /// - parameter interval: to check in
     /// - returns: true if it is in interval otherwise false
     public func isIn(interval: CountableClosedRange<Int>) -> Bool {
-        return $.it(self, isIn: Range(interval))
+        return `$`.it(self, isIn: Range(interval))
     }
 
     /// Returns true if i is in half open interval
@@ -175,7 +175,7 @@ public extension Int {
     /// - parameter interval: to check in
     /// - returns: true if it is in interval otherwise false
     public func isIn(interval: Range<Int>) -> Bool {
-        return $.it(self, isIn: interval)
+        return `$`.it(self, isIn: interval)
     }
 
     private func mathForUnit(unit: Calendar.Component) -> CalendarMath {

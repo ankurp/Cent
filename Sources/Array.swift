@@ -17,7 +17,7 @@ public extension Array {
     /// - parameter indexes: Get elements from these indexes
     /// - returns: New array with elements from the indexes specified.
     func at(indexes: Int...) -> [Element] {
-        return $.at(self, indexes: indexes)
+        return `$`.at(self, indexes: indexes)
     }
 
     /// Cycles through the array n times passing each element into the callback function
@@ -25,14 +25,14 @@ public extension Array {
     /// - parameter times: Number of times to cycle through the array
     /// - parameter callback: function to call with the element
     func cycle<U>(times: Int, callback: (Element) -> U) {
-        $.cycle(self, times, callback: callback)
+        `$`.cycle(self, times, callback: callback)
     }
 
     /// Cycles through the array indefinetly passing each element into the callback function
     ///
     /// - parameter callback: function to call with the element
     func cycle<U>(callback: (Element) -> U) {
-        $.cycle(self, callback: callback)
+        `$`.cycle(self, callback: callback)
     }
 
     /// For each item in the array invoke the callback by passing the elem
@@ -63,7 +63,7 @@ public extension Array {
     /// - parameter callback: The callback function to invoke
     /// - returns: The array itself
     @discardableResult func each(when: (Element) -> Bool, callback: (Element) -> ()) -> [Element] {
-        return $.each(self, when: when, callback: callback)
+        return `$`.each(self, when: when, callback: callback)
     }
 
     /// Checks if the given callback returns true value for all items in the array.
@@ -71,7 +71,7 @@ public extension Array {
     /// - parameter callback: Check whether element value is true or false.
     /// - returns: First element from the array.
     func every(callback: (Element) -> Bool) -> Bool {
-        return $.every(self, callback: callback)
+        return `$`.every(self, callback: callback)
     }
 
     /// Get element from an array at the given index which can be negative
@@ -81,7 +81,7 @@ public extension Array {
     /// - parameter orElse: Default value to use if index is out of bounds
     /// - returns: Element fetched from the array or the default value passed in orElse
     func fetch(index: Int, orElse: Element? = .none) -> Element! {
-        return $.fetch(self, index, orElse: orElse)
+        return `$`.fetch(self, index, orElse: orElse)
     }
 
     /// This method is like find except that it returns the index of the first element
@@ -90,7 +90,7 @@ public extension Array {
     /// - parameter callback: Function used to figure out whether element is the same.
     /// - returns: First element's index from the array found using the callback.
     func findIndex(callback: (Element) -> Bool) -> Int? {
-        return $.findIndex(self, callback: callback)
+        return `$`.findIndex(self, callback: callback)
     }
 
     /// This method is like findIndex except that it iterates over elements of the array
@@ -99,21 +99,21 @@ public extension Array {
     /// - parameter callback: Function used to figure out whether element is the same.
     /// - returns: Last element's index from the array found using the callback.
     func findLastIndex(callback: (Element) -> Bool) -> Int? {
-        return $.findLastIndex(self, callback: callback)
+        return `$`.findLastIndex(self, callback: callback)
     }
 
     /// Gets the first element in the array.
     ///
     /// - returns: First element from the array.
     func first() -> Element? {
-        return $.first(self)
+        return `$`.first(self)
     }
 
     /// Flattens the array
     ///
     /// - returns: Flatten array of elements
     func flatten() -> [Element] {
-        return $.flatten(self)
+        return `$`.flatten(self)
     }
 
     /// Get element at index
@@ -129,14 +129,14 @@ public extension Array {
     /// - parameter numElements: The number of elements to ignore in the end.
     /// - returns: Array of initial values.
     func initial(numElements: Int? = 1) -> [Element] {
-        return $.initial(self, numElements: numElements!)
+        return `$`.initial(self, numElements: numElements!)
     }
 
     /// Gets the last element from the array.
     ///
     /// - returns: Last element from the array.
     func last() -> Element? {
-        return $.last(self)
+        return `$`.last(self)
     }
 
     /// The opposite of initial this method gets all but the first element or first n elements of an array.
@@ -144,21 +144,21 @@ public extension Array {
     /// - parameter numElements: The number of elements to exclude from the beginning.
     /// - returns: The rest of the elements.
     func rest(numElements: Int? = 1) -> [Element] {
-        return $.rest(self, numElements: numElements!)
+        return `$`.rest(self, numElements: numElements!)
     }
 
     /// Retrieves the minimum value in an array.
     ///
     /// - returns: Minimum value from array.
     func min<T: Comparable>() -> T? {
-        return $.min(map { $0 as! T })
+        return `$`.min(map { $0 as! T })
     }
 
     /// Retrieves the maximum value in an array.
     ///
     /// - returns: Maximum element in array.
     func max<T: Comparable>() -> T? {
-        return $.max(map { $0 as! T })
+        return `$`.max(map { $0 as! T })
     }
 
     /// Gets the index at which the first occurrence of value is found.
@@ -166,7 +166,7 @@ public extension Array {
     /// - parameter value: Value whose index needs to be found.
     /// - returns: Index of the element otherwise returns nil if not found.
     func indexOf<T: Equatable>(value: T) -> Int? {
-        return $.indexOf(map { $0 as! T }, value: value)
+        return `$`.indexOf(map { $0 as! T }, value: value)
     }
 
     /// Remove element from array
@@ -174,7 +174,7 @@ public extension Array {
     /// - parameter value: Value that is to be removed from array
     /// - returns: Element at that index
     mutating func remove<T: Equatable>(value: T) -> T? {
-        if let index = $.indexOf(map { $0 as! T }, value: value) {
+        if let index = `$`.indexOf(map { $0 as! T }, value: value) {
             return (remove(at: index) as? T)
         } else {
             return .none
@@ -186,7 +186,7 @@ public extension Array {
     /// - parameter value: The value to check.
     /// - returns: Whether value is in the array.
     func contains<T: Equatable>(value: T) -> Bool {
-        return $.contains(map { $0 as! T }, value: value)
+        return `$`.contains(map { $0 as! T }, value: value)
     }
 
     /// Return the result of repeatedly calling `combine` with an accumulated value initialized
@@ -231,7 +231,7 @@ extension Array where Element: Hashable {
     /// - parameter values: The array of values.
     /// - returns: Dictionary based on the keys and values passed in order.
     public func zipObject<T>(values: [T]) -> [Element:T] {
-        return $.zipObject(self, values: values)
+        return `$`.zipObject(self, values: values)
     }
 }
 
@@ -261,5 +261,5 @@ public func<<<T>( array: inout [T], elem: T) -> [T] {
 /// - parameter right: array containing elements to remove
 /// - returns: array with the elements from second array removed
 public func -<T: Hashable>(left: [T], right: [T]) -> [T] {
-    return $.difference(left, right)
+    return `$`.difference(left, right)
 }
