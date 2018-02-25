@@ -25,12 +25,12 @@ public class Regex {
     }
 
     public func matches(testStr: String) -> [NSTextCheckingResult] {
-        let matches = self.expression.matches(in: testStr, options: [], range:NSMakeRange(0, testStr.characters.count))
+        let matches = self.expression.matches(in: testStr, options: [], range: NSMakeRange(0, testStr.count))
         return matches
     }
 
     public func rangeOfFirstMatch(testStr: String) -> NSRange {
-        return self.expression.rangeOfFirstMatch(in: testStr, options: [], range:NSMakeRange(0, testStr.characters.count))
+        return self.expression.rangeOfFirstMatch(in: testStr, options: [], range: NSMakeRange(0, testStr.count))
     }
 
     public func test(testStr: String) -> Bool {

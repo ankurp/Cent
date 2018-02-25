@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Dollar",
+        "repositoryURL": "https://github.com/ankurp/Dollar",
+        "state": {
+          "branch": null,
+          "revision": "433d4ba9a3bec8aa739f05cb8505527aab7a30e7",
+          "version": "7.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -31,7 +31,7 @@ class CentTests: XCTestCase {
 
     func testArrayEach() {
         var arr: [String] = []
-        let result = ["A", "B", "C"].each() { (str: String) -> (Void) in
+        let result = ["A", "B", "C"].each() { (str: String) -> () in
             arr.append(str)
         }
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")
@@ -189,7 +189,7 @@ class CentTests: XCTestCase {
         XCTAssertEqual(str.deburr(), match, "Should remove string of all accents and diacritics")
     }
 
-    func contextCases(_ context: (_ testStrings: [String]) -> Void) {
+    func contextCases(_ context: (_ testStrings: [String]) -> ()) {
         let testStrs = [
             "I will give you <50> bucks",
             "In Philàdèlphia, it is wõrth 50 bucks.",
@@ -202,7 +202,7 @@ class CentTests: XCTestCase {
     }
 
     func testCamelCase() {
-        contextCases { (testStrings) -> Void in
+        contextCases { (testStrings) -> () in
             let camelCased = testStrings.map({ (str) -> String in
                 str.camelCase
             })
@@ -219,7 +219,7 @@ class CentTests: XCTestCase {
     }
 
     func testKebabCase() {
-        contextCases { (testStrings) -> Void in
+        contextCases { (testStrings) -> () in
             let kebabCase = testStrings.map({ (str) -> String in
                 str.kebabCase
             })
@@ -236,7 +236,7 @@ class CentTests: XCTestCase {
     }
 
     func testSnakeCase() {
-        contextCases { (testStrings) -> Void in
+        contextCases { (testStrings) -> () in
             let snakeCase = testStrings.map({ (str) -> String in
                 str.snakeCase
             })
@@ -253,7 +253,7 @@ class CentTests: XCTestCase {
     }
 
     func testStartCase() {
-        contextCases { (testStrings) -> Void in
+        contextCases { (testStrings) -> () in
             let startCase = testStrings.map({ (str) -> String in
                 str.startCase
             })
