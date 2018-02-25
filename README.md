@@ -40,6 +40,7 @@ Add the following dependency `.Package(url: "https://github.com/ankurp/Cent", ma
 
 ## Support for Xcode and Swift
 
+* For Xcode 9 (Swift 4) user version `7.0.0`
 * For Xcode 8 (Swift 3) user version `6.0.4`
 * For Xcode 7 (Swift 2) use version `4.1.0` or `5.2.0`
 * For Xcode 6.3 (Swift 1.2) use version `3.0.3`
