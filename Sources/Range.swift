@@ -13,7 +13,7 @@ public extension CountableRange {
     /// For each index in the range invoke the callback by passing the item in range
     ///
     /// - parameter callback: The callback function to invoke that take an element
-    func eachWithIndex(callback: (Element) -> (Void)) {
+    func eachWithIndex(callback: (Element) -> ()) {
         for index in self {
             callback(index)
         }
@@ -22,7 +22,7 @@ public extension CountableRange {
     /// For each index in the range invoke the callback
     ///
     /// - parameter callback: The callback function to invoke
-    func each(callback: @escaping (Void) -> (Void)) {
+    func each(callback: @escaping () -> ()) {
         self.eachWithIndex() { (T) -> () in
             callback()
         }
@@ -35,7 +35,7 @@ public extension CountableClosedRange {
     /// For each index in the range invoke the callback by passing the item in range
     ///
     /// - parameter callback: The callback function to invoke that take an element
-    func eachWithIndex(callback: (Element) -> (Void)) {
+    func eachWithIndex(callback: (Element) -> ()) {
         for index in self {
             callback(index)
         }
@@ -44,7 +44,7 @@ public extension CountableClosedRange {
     /// For each index in the range invoke the callback
     ///
     /// - parameter callback: The callback function to invoke
-    func each(callback: @escaping (Void) -> (Void)) {
+    func each(callback: @escaping () -> ()) {
         self.eachWithIndex() { (T) -> () in
             callback()
         }
