@@ -283,6 +283,13 @@ class CentTests: XCTestCase {
     /**
         Int Test Cases
     */
+    
+    func testIntRange() {
+        XCTAssertTrue(0.isIn(interval: 0...2), "Should return true")
+        XCTAssertTrue(1.isIn(interval: 0...2), "Should return true")
+        XCTAssertTrue(2.isIn(interval: 0...2), "Should return true")
+        XCTAssertFalse(3.isIn(interval: 0...2), "Should return false")
+    }
 
     func testDateMath() {
         let calendar = Calendar.current
