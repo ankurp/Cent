@@ -401,8 +401,8 @@ dic.merge(anotherDic)
 Invoke a callback n times with callback that takes index
 
 ```swift
-5.times { print("Na") } 
-=> "NaNaNaNaNa"
+5.times { (a: Int) -> () in print("\(a) ") } 
+=> 0 1 2 3 4  
 ```
 
 ### `times (function: () -> ())`
@@ -410,8 +410,8 @@ Invoke a callback n times with callback that takes index
 Invoke a callback n times
 
 ```swift
-5.times { (a: Int) -> () in print("\(a) ") } 
-=> 0 1 2 3 4  
+5.times { print("Na") } 
+=> "NaNaNaNaNa"
 ```
 
 ### `char -> Character`
