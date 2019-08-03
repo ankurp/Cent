@@ -55,7 +55,7 @@ public extension String {
     /// - parameter index: Index for which the character is returned
     /// - returns: Character at index i
     public subscript(index: Int) -> Character? {
-        if let char = Array(self.characters).get(index: index) {
+        if let char = Array(self).get(index: index) {
             return char
         }
         return .none
