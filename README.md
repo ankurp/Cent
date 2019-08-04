@@ -106,7 +106,7 @@ array.each { (index, elem)
 
 ### `cycle<U>(times: Int, callback: (Element) -> U)`
 
-Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.
+Cycles through the array definitely or indefinitely passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinitely.
 
 ```swift
 [1, 2, 3].cycle(2) {
