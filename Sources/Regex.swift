@@ -40,7 +40,7 @@ public class Regex {
 
     public class func escapeStr(str: String) -> String {
         let matches = RegexPatternRegex.matches(testStr: str)
-        var charArr = [Character](str.characters)
+        var charArr = [Character](str)
         var strBuilder = [Character]()
         var i = 0
         for match in matches {
